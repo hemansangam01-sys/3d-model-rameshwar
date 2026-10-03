@@ -1,0 +1,559 @@
+@charset "UTF-8";
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #0c0d0e;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-color: #0c0d0e;
+  color: #ffffff;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Luxury Typography */
+.font-serif {
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.04em;
+}
+
+.font-sans {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Background Canvas Layer */
+.fixed-canvas-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Content Container */
+.page-container {
+  position: relative;
+  width: 100%;
+  background-color: #0c0d0e;
+  overflow-x: hidden;
+}
+
+.content-layers {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+}
+
+/* Navigation Header */
+.luxury-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.8rem 3.5rem;
+  z-index: 50;
+  pointer-events: auto;
+  background: linear-gradient(to bottom, rgba(12, 13, 14, 0.8), transparent);
+  backdrop-filter: blur(8px);
+}
+
+.brand-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.brand-subtitle {
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  color: #c5a059;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+.nav-status {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  color: #9ba1a6;
+  text-transform: uppercase;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #c5a059;
+  box-shadow: 0 0 10px #c5a059;
+}
+
+/* Sections Common */
+.story-section {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 5rem 4.5rem;
+}
+
+/* Section 1: Hero Centered Top-Aligned */
+.section-hero-centered {
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 7.5rem;
+}
+
+.hero-centered-content {
+  text-align: center;
+  max-width: 800px;
+  pointer-events: auto;
+}
+
+.hero-frosted-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .hero-frosted-card {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .mobile-split-left,
+  .mobile-split-right {
+    width: auto !important;
+    max-width: 580px !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    overflow: visible !important;
+  }
+}
+
+.hero-headline {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(2.8rem, 6.5vw, 5.2rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: 0.06em;
+  color: #ffffff;
+  margin-bottom: 0.9rem;
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.85);
+}
+
+.hero-subtitle {
+  font-size: 0.92rem;
+  letter-spacing: 0.28em;
+  color: #c5a059;
+  text-transform: uppercase;
+  margin-bottom: 1.8rem;
+  font-weight: 500;
+}
+
+/* Mouse Scroll Indicator */
+.hero-scroll-cue {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.mouse-scroll-icon {
+  width: 22px;
+  height: 36px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-radius: 12px;
+  position: relative;
+}
+
+.mouse-scroll-dot {
+  width: 4px;
+  height: 7px;
+  background-color: #c5a059;
+  border-radius: 2px;
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: mouseWheel 2s infinite ease-in-out;
+}
+
+@keyframes mouseWheel {
+  0% { transform: translate(-50%, 0); opacity: 1; }
+  50% { transform: translate(-50%, 12px); opacity: 0.2; }
+  100% { transform: translate(-50%, 0); opacity: 1; }
+}
+
+/* Section 2: Craftsmanship (Left Aligned Desktop) */
+.section-specs-left {
+  justify-content: flex-start;
+}
+
+/* Section 3: Specification (Right Aligned Desktop) */
+.section-inquire-right {
+  justify-content: flex-end;
+}
+
+.text-container {
+  max-width: 520px;
+  pointer-events: auto;
+}
+
+/* Badges / Kickers */
+.kicker-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.9rem;
+  border-radius: 9999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #c5a059;
+  background: rgba(197, 160, 89, 0.08);
+  border: 1px solid rgba(197, 160, 89, 0.25);
+  margin-bottom: 1.4rem;
+}
+
+.section-headline {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(2.2rem, 3.8vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: #ffffff;
+  margin-bottom: 1.2rem;
+  text-shadow: 0 4px 25px rgba(0, 0, 0, 0.7);
+}
+
+.sub-paragraph {
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: #9ba1a6;
+  font-weight: 400;
+  margin-bottom: 1.8rem;
+}
+
+/* ==========================================================================
+   Card Transparency:
+   Removed dark background boxes and heavy borders to avoid cutting off the 3D slab
+   ========================================================================== */
+.specs-glass-card {
+  background: transparent;
+  border: none;
+  backdrop-filter: none;
+  border-radius: 0;
+  padding: 0.5rem 0;
+  margin-top: 1rem;
+  box-shadow: none;
+}
+
+.bullet-specs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.bullet-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  font-size: 0.9rem;
+  color: #d1d5db;
+  line-height: 1.5;
+}
+
+.bullet-dot {
+  color: #c5a059;
+  font-size: 1.1rem;
+  line-height: 1;
+  margin-top: 1px;
+}
+
+.bullet-highlight {
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* Micro-details List in Section 3 */
+.micro-details-card {
+  background: transparent;
+  border: none;
+  backdrop-filter: none;
+  border-radius: 0;
+  padding: 0.5rem 0;
+  margin-bottom: 2rem;
+  box-shadow: none;
+}
+
+.detail-row {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 0.85rem;
+  font-size: 0.85rem;
+  color: #c4c8cd;
+}
+
+.detail-row:last-child {
+  margin-bottom: 0;
+}
+
+.check-icon {
+  color: #c5a059;
+  font-size: 0.9rem;
+}
+
+/* Interactive Buttons */
+.btn-luxury {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  padding: 1.05rem 2.2rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #0c0d0e;
+  background: linear-gradient(135deg, #f5f3ee, #d8d4cb);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 4px 24px rgba(255, 255, 255, 0.18);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+}
+
+.btn-luxury:hover {
+  transform: translateY(-2px);
+  background: #ffffff;
+  box-shadow: 0 8px 30px rgba(255, 255, 255, 0.28);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.95rem 1.8rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: #d1d5db;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 4px;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+}
+
+/* Ambient Gradient Vignette */
+.ambient-glow {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(circle at 50% 75%, rgba(197, 160, 89, 0.05) 0%, transparent 60%),
+              radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.02) 0%, transparent 40%);
+}
+
+/* ==========================================================================
+   Responsive Spacing: Desktop vs Mobile Layout
+   ========================================================================== */
+
+/* Desktop (1024px and above): Keep original side-by-side layout intact */
+@media (min-width: 1024px) {
+  .section-specs-left .text-container,
+  .section-inquire-right .text-container,
+  .section-text-wrapper {
+    padding-top: 0 !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .luxury-nav {
+    padding: 1.4rem 2rem;
+  }
+  .story-section {
+    padding: 4rem 2rem;
+  }
+}
+
+/* Tablet & Mobile (< 1024px): 70/25 Asymmetrical Split with hard-capped text containers */
+@media (max-width: 1023px) {
+  .luxury-nav {
+    padding: 1.1rem 1.4rem;
+  }
+  .brand-title {
+    font-size: 0.95rem;
+    letter-spacing: 0.16em;
+  }
+  .brand-subtitle {
+    font-size: 0.58rem;
+  }
+  .nav-status {
+    display: none;
+  }
+
+  /* Section 1 Mobile & Tablet */
+  .section-hero-centered {
+    padding-top: 5.5rem;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .hero-frosted-card {
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    background-color: rgba(0, 0, 0, 0.4) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 1rem !important; /* rounded-2xl */
+    padding: 1.25rem !important; /* p-5 */
+    margin-left: 1rem !important; /* mx-4 */
+    margin-right: 1rem !important;
+    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.55) !important;
+  }
+  .hero-headline {
+    font-size: clamp(2.2rem, 9.5vw, 3.4rem);
+    margin-bottom: 0.6rem;
+  }
+  .hero-subtitle {
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    margin-bottom: 1.2rem;
+  }
+
+  /* Section 2 & 3 Tablet & Mobile (< 1024px) 70/25 Side-to-Side Split */
+  .section-specs-left {
+    justify-content: flex-start !important;
+    align-items: center !important;
+    padding: 3rem 0 !important;
+  }
+
+  .section-inquire-right {
+    justify-content: flex-end !important;
+    align-items: center !important;
+    padding: 3rem 0 !important;
+  }
+
+  /* Reset vertical-stack 50vh padding */
+  .section-specs-left .text-container,
+  .section-inquire-right .text-container,
+  .section-text-wrapper {
+    padding-top: 0 !important;
+  }
+
+  /* Section 2: Left 62% viewport hard-capped (w-[62vw] max-w-[62vw] text-left pl-4 pr-2) */
+  .mobile-split-left,
+  .section-specs-left .text-container {
+    width: 62vw !important;
+    max-width: 62vw !important;
+    overflow: hidden !important;
+    text-align: left !important;
+    padding-left: 1rem !important;  /* pl-4 */
+    padding-right: 0.5rem !important; /* pr-2 */
+    margin-left: 0 !important;
+    margin-right: auto !important;
+    box-sizing: border-box !important;
+  }
+
+  .section-specs-left .text-container * {
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Section 3: Right 62% viewport hard-capped (w-[62vw] max-w-[62vw] ml-auto text-left pr-4 pl-2) */
+  .mobile-split-right,
+  .section-inquire-right .text-container {
+    width: 62vw !important;
+    max-width: 62vw !important;
+    overflow: hidden !important;
+    margin-left: auto !important;   /* ml-auto */
+    margin-right: 0 !important;
+    text-align: left !important;    /* text-left */
+    padding-right: 1rem !important; /* pr-4 */
+    padding-left: 0.5rem !important;  /* pl-2 */
+    box-sizing: border-box !important;
+  }
+
+  /* Ensure no child containers or cards default to full screen width over the left-docked slab */
+  .section-inquire-right .text-container * {
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .section-headline {
+    font-size: clamp(1.4rem, 5.8vw, 1.85rem);
+    margin-bottom: 0.75rem;
+    line-height: 1.15;
+  }
+
+  .sub-paragraph {
+    font-size: 0.82rem;
+    line-height: 1.55;
+    margin-bottom: 1rem;
+  }
+
+  .specs-glass-card,
+  .micro-details-card {
+    padding: 0.35rem 0;
+  }
+
+  .bullet-item {
+    font-size: 0.78rem;
+    line-height: 1.45;
+    gap: 0.5rem;
+  }
+
+  .btn-luxury {
+    width: 100%;
+    padding: 0.85rem 1.2rem;
+    font-size: 0.75rem;
+  }
+
+  .btn-secondary {
+    width: 100%;
+    padding: 0.75rem 1.2rem;
+    font-size: 0.72rem;
+  }
+}
